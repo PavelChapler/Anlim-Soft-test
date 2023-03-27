@@ -2,6 +2,8 @@
 </script>
 
 <template>
+  <h1>Menu Menu1</h1>
+  <router-view></router-view>
 </template>
 
 <style scoped>

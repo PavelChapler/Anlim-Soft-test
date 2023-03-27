@@ -3,7 +3,14 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "parser": "vue-eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "root": true,
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  }
 }
