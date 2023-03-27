@@ -23,10 +23,12 @@
   left: 0;
   padding: 60px;
 }
+
 .list {
   display: flex;
   justify-content: center;
 }
+
 .link {
   margin: 0 15px;
   font-size: 20px;
