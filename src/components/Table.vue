@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(row, i) in reactiveRows" :key="i">
+      <tr @click="addUser(row, i)" v-for="(row, i) in reactiveRows" :key="i" class="table-row">
         <td v-for="(col, i) in cols" :key="i" class="table-col">
           {{ (col.title === 'name') ? `${row[col.title]} ${row['surname']}` : row[col.title] }}
         </td>
@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, onMounted, toRef } from "vue";
+import { defineProps, defineEmits, toRef } from "vue";
 
 interface IProps {
   rows: object[],
@@ -43,7 +43,15 @@ const props = withDefaults(defineProps<IProps>(), {
   ]
 })
 
+const emit = defineEmits(["addPlayer"])
+
 const reactiveRows = toRef(props, 'rows')
+
+
+function addUser (player: object, i: number) {
+  emit('addPlayer', {player: player, index: i})
+  reactiveRows.value.splice(i, 1)
+}
 
 function sortByName() {
   reactiveRows.value.sort((a, b) => a.name.localeCompare(b.name))
@@ -71,6 +79,14 @@ sortByName()
   text-align: start;
 }
 
+.table-row {
+  cursor: pointer;
+}
+
+.table-row:hover {
+  outline: 2px solid var(--main-color);
+}
+
 .icon {
   font-size: 22px;
   margin-left: 5px;
@@ -78,11 +94,24 @@ sortByName()
 }
 
 .icon:hover {
-  color: gray;
+  color: var(--main-color);
 }
 
 .col-wrapper {
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 982px) {
+  .table {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .table {
+    font-size: 12px;
+  }
 }
 </style>

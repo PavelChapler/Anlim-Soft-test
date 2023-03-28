@@ -21,7 +21,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding: 60px;
+  padding: 40px 60px 10px;
+  background:  #242424;
+  z-index: 10;
 }
 
 .list {
