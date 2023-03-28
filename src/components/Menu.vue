@@ -30,7 +30,7 @@
 }
 
 .link {
-  margin: 0 15px;
+  margin: 0 25px;
   font-size: 20px;
 }
 </style>
