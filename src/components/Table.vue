@@ -47,16 +47,30 @@ const emit = defineEmits(["addPlayer"])
 
 const reactiveRows = toRef(props, 'rows')
 
-
+/**
+ * Добавляет пользователя в группу через емит в Functionality.vue
+ * @function
+ * @name addUser
+ * @param {IPlayer} player - обьект игрока
+ * @param {number} i - индекс
+ */
 function addUser (player: object, i: number) {
   emit('addPlayer', {player: player, index: i})
   reactiveRows.value.splice(i, 1)
 }
-
+/**
+ * Сортировка по имени
+ * @function
+ * @name sortByName
+ */
 function sortByName() {
   reactiveRows.value.sort((a, b) => a.name.localeCompare(b.name))
 }
-
+/**
+ * Сортировка по дате рождения
+ * @function
+ * @name sortByBirthday
+ */
 function sortByBirthday() {
   reactiveRows.value.sort((a, b) => +a.birthday.substring(0, 4) - +b.birthday.substring(0, 4))
 }

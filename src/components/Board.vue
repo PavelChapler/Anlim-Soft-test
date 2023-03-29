@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import { defineEmits, defineProps } from "vue";
+import { IPlayer } from "../types/IPlayer";
 
 interface IProps {
   title: string,
@@ -23,8 +24,14 @@ const props = withDefaults(defineProps<IProps>(), {
 })
 
 const emit = defineEmits(['returnPlayer'])
-
-function returnUser(player: object, i: number) {
+/**
+ * Возвращает игрока в таблицу через емит в Functionality.vue
+ * @function
+ * @name returnUser
+ * @param {IPlayer} player - обьект игрока
+ * @param {number} i - индекс
+ */
+function returnUser(player: IPlayer, i: number) {
   emit('returnPlayer', {player: player, index: i})
   props.players.splice(i, 1)
 }

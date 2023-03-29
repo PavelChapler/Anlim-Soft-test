@@ -4,7 +4,7 @@
       <menu>
         <ul class="list">
           <li><router-link to="/" class="link">Home</router-link></li>
-          <li><router-link to="/functionality" class="link">Players</router-link></li>
+          <li><router-link to="/functionality" class="link">Groups</router-link></li>
         </ul>
       </menu>
     </header>
